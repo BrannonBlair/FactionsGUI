@@ -16,6 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import com.massivecraft.factions.PlayerRoleComparator;
+import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.MPlayer;
@@ -24,10 +25,10 @@ import com.massivecraft.massivecore.mixin.Mixin;
 
 public class SpectateGUI implements Listener {
 
-	int rel = 0;
 	private Inventory spectate;
 	private Inventory kick;
 	Inventory inventory;
+	int rel = 0;
 
 	public void openSpectateGUI(Player player) {
 		int rows;
@@ -43,7 +44,7 @@ public class SpectateGUI implements Listener {
 			sort.add(p.getName());
 		}
 		Collections.sort(sort);
-		
+
 		for (String p : sort) {
 			ItemStack is = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 			SkullMeta im = (SkullMeta) is.getItemMeta();
@@ -67,7 +68,7 @@ public class SpectateGUI implements Listener {
 				e.setCancelled(true);
 				if ((e.getCurrentItem().hasItemMeta()) && (e.getCurrentItem().getItemMeta().hasDisplayName())) {
 					String name = e.getCurrentItem().getItemMeta().getDisplayName().trim();
-					
+
 					p.performCommand("f invite a " + name);
 				} else {
 					p.closeInventory();
@@ -155,7 +156,7 @@ public class SpectateGUI implements Listener {
 				} else if (e.isRightClick()) {
 					if (e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().hasDisplayName()) {
 						String name = e.getCurrentItem().getItemMeta().getDisplayName().trim();
-						
+
 						p.performCommand("f demote " + name);
 					}
 				} else {
@@ -1038,7 +1039,7 @@ public class SpectateGUI implements Listener {
 			sort.add(p.getName());
 		}
 		Collections.sort(sort);
-		
+
 		for (String p : sort) {
 			ItemStack is = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 			SkullMeta im = (SkullMeta) is.getItemMeta();
@@ -1059,7 +1060,7 @@ public class SpectateGUI implements Listener {
 
 		List<String> followerNamesOnline = new ArrayList<String>();
 		List<MPlayer> followers = faction.getMPlayers();
-		
+
 		Collections.sort(followers, PlayerRoleComparator.get());
 
 		int rows;
@@ -1093,7 +1094,7 @@ public class SpectateGUI implements Listener {
 
 		List<String> followerNamesOnline = new ArrayList<String>();
 		List<MPlayer> followers = faction.getMPlayers();
-		
+
 		Collections.sort(followers, PlayerRoleComparator.get());
 
 		int rows;
