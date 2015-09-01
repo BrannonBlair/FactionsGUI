@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -21,8 +22,6 @@ import org.spigotmc.Metrics;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.MPlayer;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class FactionsGUI extends JavaPlugin implements Listener {
 	public void onEnable() {
