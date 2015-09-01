@@ -3,10 +3,9 @@ package toxxicjtag.com.github;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,15 +15,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import com.massivecraft.factions.FactionListComparator;
 import com.massivecraft.factions.PlayerRoleComparator;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.FactionColl;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.mixin.Mixin;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class SpectateGUI implements Listener {
 
@@ -42,11 +38,17 @@ public class SpectateGUI implements Listener {
 		}
 		spectate = Bukkit.createInventory(player, rows * 9, ChatColor.GREEN + "Click Head to Offer Membership");
 		int i = 0;
+		List<String> sort = new ArrayList<String>();
 		for (Player p : Bukkit.getOnlinePlayers()) {
+			sort.add(p.getName());
+		}
+		Collections.sort(sort);
+		
+		for (String p : sort) {
 			ItemStack is = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 			SkullMeta im = (SkullMeta) is.getItemMeta();
-			im.setOwner(p.getName());
-			im.setDisplayName(p.getName());
+			im.setOwner(p);
+			im.setDisplayName(p);
 			is.setItemMeta(im);
 			this.spectate.setItem(i, is);
 			if (i < this.spectate.getSize()) {
@@ -64,10 +66,9 @@ public class SpectateGUI implements Listener {
 			if ((e.getCurrentItem() != null) && (e.getCurrentItem().getType() != null)) {
 				e.setCancelled(true);
 				if ((e.getCurrentItem().hasItemMeta()) && (e.getCurrentItem().getItemMeta().hasDisplayName())) {
-					Player c = Bukkit.getPlayer(e.getCurrentItem().getItemMeta().getDisplayName().trim());
-					if (c != null) {
-						p.performCommand("f invite a " + c.getName());
-					}
+					String name = e.getCurrentItem().getItemMeta().getDisplayName().trim();
+					
+					p.performCommand("f invite a " + name);
 				} else {
 					p.closeInventory();
 					p.performCommand("fgui");
@@ -77,10 +78,9 @@ public class SpectateGUI implements Listener {
 			if ((e.getCurrentItem() != null) && (e.getCurrentItem().getType() != null)) {
 				e.setCancelled(true);
 				if ((e.getCurrentItem().hasItemMeta()) && (e.getCurrentItem().getItemMeta().hasDisplayName())) {
-					Player c = Bukkit.getPlayer(e.getCurrentItem().getItemMeta().getDisplayName().trim());
-					if (c != null) {
-						p.performCommand("f invite r " + c.getName());
-					}
+					String name = e.getCurrentItem().getItemMeta().getDisplayName().trim();
+
+					p.performCommand("f invite r " + name);
 				} else {
 					p.closeInventory();
 					p.performCommand("fgui");
@@ -90,16 +90,9 @@ public class SpectateGUI implements Listener {
 			if ((e.getCurrentItem() != null) && (e.getCurrentItem().getType() != null)) {
 				e.setCancelled(true);
 				if ((e.getCurrentItem().hasItemMeta()) && (e.getCurrentItem().getItemMeta().hasDisplayName())) {
-					Player c = Bukkit.getServer().getPlayer(e.getCurrentItem().getItemMeta().getDisplayName().trim());
+					String name = e.getCurrentItem().getItemMeta().getDisplayName().trim();
 
-					@SuppressWarnings("deprecation")
-					OfflinePlayer offline = Bukkit.getServer()
-							.getOfflinePlayer(e.getCurrentItem().getItemMeta().getDisplayName().trim());
-					if (c != null) {
-						p.performCommand("f kick " + c.getName());
-					} else {
-						p.performCommand("f kick " + offline.getName());
-					}
+					p.performCommand("f kick " + name);
 				} else {
 					p.closeInventory();
 					p.performCommand("fgui");
@@ -111,11 +104,7 @@ public class SpectateGUI implements Listener {
 				if (e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().hasDisplayName()) {
 					String f = e.getCurrentItem().getItemMeta().getDisplayName().trim();
 					if (e.isLeftClick()) {
-						if (f != null) {
-							p.performCommand("f f " + f);
-						} else {
-							p.performCommand("f f " + f);
-						}
+						p.performCommand("f f " + f);
 					} else if (e.isRightClick()) {
 						String c =  FactionColl.get().getByName(f).getName();
 						int z = 0;
@@ -143,8 +132,8 @@ public class SpectateGUI implements Listener {
 							rel = 0;
 							z = 1;
 							continue;
+							}
 						}
-					}
 					}
 				} else {
 					p.closeInventory();
@@ -156,32 +145,18 @@ public class SpectateGUI implements Listener {
 				e.setCancelled(true);
 				if (e.isLeftClick()) {
 					if (e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().hasDisplayName()) {
-						Player c = Bukkit.getServer()
-								.getPlayer(e.getCurrentItem().getItemMeta().getDisplayName().trim());
-						@SuppressWarnings("deprecation")
-						OfflinePlayer offline = Bukkit.getServer()
-								.getOfflinePlayer(e.getCurrentItem().getItemMeta().getDisplayName().trim());
-						if (c != null) {
-							p.performCommand("f promote " + c.getName());
-						} else {
-							p.performCommand("f promote " + offline.getName());
-						}
+						String name = e.getCurrentItem().getItemMeta().getDisplayName().trim();
+
+						p.performCommand("f promote " + name);
 					} else {
 						p.closeInventory();
 						p.performCommand("fgui");
 					}
 				} else if (e.isRightClick()) {
 					if (e.getCurrentItem().hasItemMeta() && e.getCurrentItem().getItemMeta().hasDisplayName()) {
-						Player c = Bukkit.getServer()
-								.getPlayer(e.getCurrentItem().getItemMeta().getDisplayName().trim());
-						@SuppressWarnings("deprecation")
-						OfflinePlayer offline = Bukkit.getServer()
-								.getOfflinePlayer(e.getCurrentItem().getItemMeta().getDisplayName().trim());
-						if (c != null) {
-							p.performCommand("f demote " + c.getName());
-						} else {
-							p.performCommand("f demote " + offline.getName());
-						}
+						String name = e.getCurrentItem().getItemMeta().getDisplayName().trim();
+						
+						p.performCommand("f demote " + name);
 					}
 				} else {
 					p.closeInventory();
@@ -551,25 +526,22 @@ public class SpectateGUI implements Listener {
 
 	public void openListGUI(Player player) {
 		MPlayer msender = MPlayer.get(player);
-		List<Faction> factions = null;
-
-		factions = FactionColl.get().getAll(FactionListComparator.get());
 
 		Inventory list = Bukkit.createInventory(null, 54, ChatColor.AQUA + "List Factions");
 
 		int z = 0;
-		for (Faction faction : factions) {
+		for (Faction faction : FactionColl.get().getAll()) {
 			ItemStack is = new ItemStack(Material.PAPER);
 			ItemMeta ismeta = is.getItemMeta();
 			ismeta.setDisplayName(faction.getName(msender));
-			ArrayList<String> Lore11 = new ArrayList<String>();
-			Lore11.add(ChatColor.YELLOW + "" + faction.getMPlayersWhereOnline(true).size() + "/"
+			ArrayList<String> FacLore = new ArrayList<String>();
+			FacLore.add(ChatColor.YELLOW + "" + faction.getMPlayersWhereOnline(true).size() + "/"
 					+ faction.getMPlayers().size() + " Online");
-			Lore11.add(ChatColor.YELLOW + "Chunks: " + faction.getLandCount());
-			Lore11.add(ChatColor.YELLOW + "Current Power: " + faction.getLandCount());
-			Lore11.add(ChatColor.YELLOW + "Max Power: " + faction.getPowerMaxRounded());
-			Lore11.add(ChatColor.DARK_RED + "Right Click To Change Relations.");
-			ismeta.setLore(Lore11);
+			FacLore.add(ChatColor.YELLOW + "Chunks: " + faction.getLandCount());
+			FacLore.add(ChatColor.YELLOW + "Current Power: " + faction.getLandCount());
+			FacLore.add(ChatColor.YELLOW + "Max Power: " + faction.getPowerMaxRounded());
+			FacLore.add(ChatColor.DARK_RED + "Right Click To Change Relations.");
+			ismeta.setLore(FacLore);
 			is.setItemMeta(ismeta);
 			list.setItem(z, is);
 			if (z < list.getSize()) {
@@ -1061,11 +1033,17 @@ public class SpectateGUI implements Listener {
 		}
 		spectate = Bukkit.createInventory(player, rows * 9, ChatColor.GREEN + "Click to Revoke Membership");
 		int i = 0;
+		List<String> sort = new ArrayList<String>();
 		for (Player p : Bukkit.getOnlinePlayers()) {
+			sort.add(p.getName());
+		}
+		Collections.sort(sort);
+		
+		for (String p : sort) {
 			ItemStack is = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 			SkullMeta im = (SkullMeta) is.getItemMeta();
-			im.setOwner(p.getName());
-			im.setDisplayName(p.getName());
+			im.setOwner(p);
+			im.setDisplayName(p);
 			is.setItemMeta(im);
 			spectate.setItem(i, is);
 			if (i < spectate.getSize()) {
@@ -1079,15 +1057,10 @@ public class SpectateGUI implements Listener {
 		MPlayer msender = MPlayer.get(player);
 		Faction faction = msender.getFaction();
 
-		List<String> followerNamesOnline = new ArrayList();
-
+		List<String> followerNamesOnline = new ArrayList<String>();
 		List<MPlayer> followers = faction.getMPlayers();
+		
 		Collections.sort(followers, PlayerRoleComparator.get());
-		for (MPlayer follower : followers) {
-			if ((follower.isOnline()) && (Mixin.canSee(player, follower.getId()))) {
-				followerNamesOnline.add(follower.getNameAndTitle(msender));
-			}
-		}
 
 		int rows;
 		if (followers.size() % 9 == 0) {
@@ -1098,6 +1071,9 @@ public class SpectateGUI implements Listener {
 		this.kick = Bukkit.createInventory(player, rows * 9, ChatColor.GREEN + "Click Head to Kick A Member");
 		int i = 0;
 		for (MPlayer p : followers) {
+			if ((p.isOnline()) && (Mixin.canSee(player, p.getId()))) {
+				followerNamesOnline.add(p.getNameAndTitle(msender));
+			}
 			ItemStack is = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 			SkullMeta im = (SkullMeta) is.getItemMeta();
 			im.setOwner(p.getName());
@@ -1116,14 +1092,10 @@ public class SpectateGUI implements Listener {
 		Faction faction = msender.getFaction();
 
 		List<String> followerNamesOnline = new ArrayList<String>();
-
 		List<MPlayer> followers = faction.getMPlayers();
+		
 		Collections.sort(followers, PlayerRoleComparator.get());
-		for (MPlayer follower : followers) {
-			if (follower.isOnline() && Mixin.canSee(player, follower.getId())) {
-				followerNamesOnline.add(follower.getNameAndTitle(msender));
-			}
-		}
+
 		int rows;
 		if (followers.size() % 9 == 0) {
 			rows = (int) (followers.size() / 9);
@@ -1133,6 +1105,9 @@ public class SpectateGUI implements Listener {
 		spectate = Bukkit.createInventory(player, rows * 9, ChatColor.GREEN + "Promote/Demote Menu");
 		int i = 0;
 		for (MPlayer p : followers) {
+			if (p.isOnline() && Mixin.canSee(player, p.getId())) {
+				followerNamesOnline.add(p.getNameAndTitle(msender));
+			}
 			ItemStack is = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 			SkullMeta im = (SkullMeta) is.getItemMeta();
 			im.setOwner(p.getName());
