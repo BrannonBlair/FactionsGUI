@@ -1,0 +1,88 @@
+# Version 1.0 of FactionsGUI - UUID
+# Author Brannon Blair
+# Skype: yodamonkey5
+# Contributors for the porting of this plugin to UUID: bloodshot45
+# item1 is the real name of the item1 slot of the border.
+# damage_value1 is the damage value of the item to make it colored. Must be filled in and a number.
+# Continued for the rest.
+########MAIN MENU########
+Main_Border:
+  item1: 'STAINED_GLASS_PANE'
+  damage_value1: 14
+  
+  item2: 'STAINED_GLASS_PANE'
+  damage_value2: 15
+#
+Information_Tab:
+  item: 'ENCHANTMENT_TABLE'
+  damage_value: 0
+#
+Status_Tab:
+  item: 'BOOK'
+  damage_value: 0
+#
+List_Factions_Tab:
+  item: 'COMPASS'
+  damage_value: 0
+#  
+Home_Tab:
+  item: 'BED'
+  damage_value: 0
+# 
+Map_Tab:
+  item: 'MAP'
+  damage_value: 0
+# 
+MemberShip_Tab:
+  item: 'PAPER'
+  damage_value: 0
+#  
+Kick_Tab:
+  item: 'DIAMOND_BOOTS'
+  damage_value: 0
+#
+Permissions_Tab:
+  item: 'TNT'
+  damage_value: 0
+#
+Promote_Demote_Tab:
+  item: 'DIAMOND_SWORD'
+  damage_value: 0
+#
+See_Chunks_Tab:
+  item: 'WEB'
+  damage_value: 0
+#
+Close_Tab:
+  item: 'BARRIER'
+  damage_value: 0
+########END MAIN MENU########
+#############################
+##########HOME MENU##########
+Home_Border:
+  item1: 'STAINED_GLASS_PANE'
+  damage_value1: 11
+  
+  item2: 'STAINED_GLASS_PANE'
+  damage_value2: 15
+#
+Home_Menu_Home:
+  item: 'BED'
+  damage_value: 0
+#
+Home_Menu_Set_Home:
+  item: 'NETHER_STAR'
+  damage_value: 0
+#
+Home_Menu_Delete_Home:
+  item: 'BARRIER'
+  damage_value: 0
+#
+Home_Back_Tab:
+  item: 'ARROW'
+  damage_value: 0
+Home_Close_Tab:
+  item: 'BARRIER'
+  damage_value: 0
+########END HOME MENU########
+#############################

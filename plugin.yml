@@ -1,0 +1,13 @@
+main: toxxicjtag.com.github.FactionsGUI
+version: 5.0
+name: FactionsGUI
+depend: [Factions]
+
+commands: 
+    fgui:
+        description: Open the menu.
+    factionsgui:
+        description: Open the menu.
+permissions:
+    factionsgui.gui:
+        default: op
