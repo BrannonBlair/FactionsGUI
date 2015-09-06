@@ -1,7 +1,6 @@
-# Version 1.0 of FactionsGUI - UUID
+# Version 1.0 of FactionsGUI
 # Author Brannon Blair
 # Skype: yodamonkey5
-# Contributors for the porting of this plugin to UUID: bloodshot45
 # item1 is the real name of the item1 slot of the border.
 # damage_value1 is the damage value of the item to make it colored. Must be filled in and a number.
 # Continued for the rest.
