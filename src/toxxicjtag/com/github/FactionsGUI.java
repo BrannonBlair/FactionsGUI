@@ -89,66 +89,66 @@ public class FactionsGUI extends JavaPlugin implements Listener {
 
         ItemStack information = new ItemStack(Material.getMaterial(infoIcon), 1, (short) infoDamage);
         ItemMeta meta = information.getItemMeta();
-        meta.setDisplayName(ChatColor.RED + "Information!");
+        meta.setDisplayName(ChatColor.BOLD + "" + ChatColor.GOLD + "Information");
         information.setItemMeta(meta);
 
         ItemStack status = new ItemStack(Material.getMaterial(statusIcon), 1, (short) statusDamage);
         ItemMeta statusmeta = status.getItemMeta();
-        statusmeta.setDisplayName(ChatColor.AQUA + "Status!");
+        statusmeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.AQUA + "Status");
         status.setItemMeta(statusmeta);
 
 		ItemStack list = new ItemStack(Material.getMaterial(listFIcon), 1, (short) listFDamage);
 		ItemMeta listmeta = list.getItemMeta();
-		listmeta.setDisplayName(ChatColor.AQUA + "List Factions!");
+		listmeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.GREEN + "List Factions");
 		ArrayList<String> Lore66 = new ArrayList<String>();
-		Lore66.add(ChatColor.RED + "Left Click For Chat Version");
-		Lore66.add(ChatColor.YELLOW + "Right Click For GUI Menu");
+		Lore66.add(ChatColor.YELLOW + "Left Click For Chat Version");
+		Lore66.add(ChatColor.YELLOW + "Right Click For GUI Version");
 		Lore66.add(ChatColor.BLUE + "  - Change Relations Inside");
 		listmeta.setLore(Lore66);
 		list.setItemMeta(listmeta);
 
 		ItemStack home = new ItemStack(Material.getMaterial(homeIcon), 1, (short) homeDamage);
 		ItemMeta homemeta = home.getItemMeta();
-		homemeta.setDisplayName(ChatColor.AQUA + "Home!");
+		homemeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.LIGHT_PURPLE + "Home");
 		ArrayList<String> Lore = new ArrayList<String>();
-		Lore.add("Left Click To Teleport.");
-		Lore.add("Right Click For Home Menu.");
+		Lore.add(ChatColor.YELLOW + "Left Click To Teleport");
+		Lore.add(ChatColor.YELLOW + "Right Click For Home Menu");
 		homemeta.setLore(Lore);
 		home.setItemMeta(homemeta);
 
 		ItemStack map = new ItemStack(Material.getMaterial(mapIcon), 1, (short) mapDamage);
 		ItemMeta mapmeta = map.getItemMeta();
-		mapmeta.setDisplayName(ChatColor.AQUA + "Map!");
+		mapmeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.DARK_GREEN + "Map");
 		ArrayList<String> Lore1 = new ArrayList<String>();
-		Lore1.add("Left Click To View Map.");
-		Lore1.add(ChatColor.DARK_PURPLE + "Right Click To Toggle Auto Map " + ChatColor.GREEN + "On " + ChatColor.WHITE
-				+ "/ " + ChatColor.RED + "Off.");
+		Lore1.add(ChatColor.YELLOW + "Left Click To View Map");
+		Lore1.add(ChatColor.YELLOW + "Right Click To Toggle Auto Map" + ChatColor.GREEN + "On " + ChatColor.WHITE
+				+ "/ " + ChatColor.RED + "Off");
 		mapmeta.setLore(Lore1);
 		map.setItemMeta(mapmeta);
 
 		ItemStack invite = new ItemStack(Material.getMaterial(memberShipIcon), 1, (short) memberShipDamage);
 		ItemMeta invitemeta = invite.getItemMeta();
-		invitemeta.setDisplayName(ChatColor.AQUA + "Membership: " + ChatColor.GREEN + "Offer " + ChatColor.WHITE + "/ "
-				+ ChatColor.RED + "Revoke.");
+		invitemeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.AQUA + "Membership: " + ChatColor.GREEN + "Offer " + ChatColor.WHITE + "/ "
+				+ ChatColor.RED + "Revoke");
 		ArrayList<String> Lore2 = new ArrayList<String>();
-		Lore2.add(ChatColor.GREEN + "Left Click To Invite A Player.");
-		Lore2.add(ChatColor.DARK_RED + "Right Click To Revoke A Player's Membership.");
+		Lore2.add(ChatColor.YELLOW + "Left Click To Invite A Player");
+		Lore2.add(ChatColor.YELLOW + "Right Click To Revoke A Player's Membership");
 		invitemeta.setLore(Lore2);
 		invite.setItemMeta(invitemeta);
 
 		ItemStack kick = new ItemStack(Material.getMaterial(kickIcon), 1, (short) kickDamage);
 		ItemMeta kickmeta = kick.getItemMeta();
-		kickmeta.setDisplayName(ChatColor.DARK_RED + "Kick Member");
+		kickmeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.DARK_RED + "Kick Member");
 		ArrayList<String> Lore3 = new ArrayList<String>();
 		kickmeta.setLore(Lore3);
 		kick.setItemMeta(kickmeta);
 
 		ItemStack perms = new ItemStack(Material.getMaterial(permsIcon), 1, (short) permsDamage);
 		ItemMeta permsmeta = perms.getItemMeta();
-		permsmeta.setDisplayName(ChatColor.YELLOW + "Permissions!");
+		permsmeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.DARK_PURPLE + "Permissions");
 		ArrayList<String> Lore11 = new ArrayList<String>();
-		Lore11.add(ChatColor.GREEN + "Left Click To View Faction Permissions.");
-		Lore11.add(ChatColor.DARK_RED + "Right Click To Edit Permissions.");
+		Lore11.add(ChatColor.YELLOW + "Left Click To View Faction Permissions");
+		Lore11.add(ChatColor.YELLOW + "Right Click To Edit Permissions");
 		permsmeta.setLore(Lore11);
 		perms.setItemMeta(permsmeta);
 
@@ -157,28 +157,28 @@ public class FactionsGUI extends JavaPlugin implements Listener {
 		playerinfometa.setOwner(player.getName());
 		playerinfometa.setDisplayName(player.getName());
 		playerinfo.setItemMeta(playerinfometa);
-		playerinfometa.setDisplayName(ChatColor.RED + "Player Faction Stats");
+		playerinfometa.setDisplayName(ChatColor.BOLD + "" + ChatColor.RED + "Player Faction Stats");
 		ArrayList<String> Lore12 = new ArrayList<String>();
 		playerinfometa.setLore(Lore12);
 		playerinfo.setItemMeta(playerinfometa);
 
 		ItemStack prode = new ItemStack(Material.getMaterial(prodeIcon), 1, (short) prodeDamage);
 		ItemMeta prodemeta = prode.getItemMeta();
-		prodemeta.setDisplayName(ChatColor.YELLOW + "Promote/Demote Members");
+		prodemeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.YELLOW + "Promote/Demote Members");
 		ArrayList<String> Lore13 = new ArrayList<String>();
 		prodemeta.setLore(Lore13);
 		prode.setItemMeta(prodemeta);
 
 		ItemStack seechunks = new ItemStack(Material.getMaterial(chunkIcon), 1, (short) chunkDamage);
 		ItemMeta seechunksmeta = seechunks.getItemMeta();
-		seechunksmeta.setDisplayName(ChatColor.BLUE + "See Chunks");
+		seechunksmeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.BLUE + "See Chunks");
 		ArrayList<String> Lore77 = new ArrayList<String>();
 		seechunksmeta.setLore(Lore77);
 		seechunks.setItemMeta(seechunksmeta);
 
 		ItemStack close = new ItemStack(Material.getMaterial(closeIcon), 1, (short) closeDamage);
 		ItemMeta closemeta = close.getItemMeta();
-		closemeta.setDisplayName(ChatColor.DARK_RED + "Close Menu!");
+		closemeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.DARK_RED + "Close Menu");
 		ArrayList<String> Lore4 = new ArrayList<String>();
 		closemeta.setLore(Lore4);
 		close.setItemMeta(closemeta);
@@ -253,29 +253,29 @@ public class FactionsGUI extends JavaPlugin implements Listener {
 
 		ItemStack teleport = new ItemStack(Material.getMaterial(homeIcon), 1, (short) (homeDamage));
 		ItemMeta tmeta = teleport.getItemMeta();
-		tmeta.setDisplayName(ChatColor.AQUA + "Teleport!");
+		tmeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.YELLOW + "Teleport");
 		teleport.setItemMeta(tmeta);
 
 		ItemStack sethome = new ItemStack(Material.getMaterial(setHomeIcon), 1, (short) (setHomeDamage));
 		ItemMeta sethomemeta = sethome.getItemMeta();
-		sethomemeta.setDisplayName(ChatColor.AQUA + "Set Home!");
+		sethomemeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.GREEN + "Set Home");
 		sethome.setItemMeta(sethomemeta);
 
 		ItemStack delhome = new ItemStack(Material.getMaterial(deleteHomeIcon), 1, (short) (deleteHomeDamage));
 		ItemMeta delhomemeta = delhome.getItemMeta();
-		delhomemeta.setDisplayName(ChatColor.AQUA + "Delete Home!");
+		delhomemeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.RED + "Delete Home");
 		delhome.setItemMeta(delhomemeta);
 
 		ItemStack back = new ItemStack(Material.getMaterial(backIcon), -1, (short) (backDamage));
 		ItemMeta backmeta = back.getItemMeta();
-		backmeta.setDisplayName(ChatColor.DARK_RED + "Back!");
+		backmeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.RED + "Back");
 		ArrayList<String> Lore5 = new ArrayList<String>();
 		backmeta.setLore(Lore5);
 		back.setItemMeta(backmeta);
 
 		ItemStack close = new ItemStack(Material.getMaterial(closeIcon), 1, (short) (closeDamage));
 		ItemMeta closemeta = close.getItemMeta();
-		closemeta.setDisplayName(ChatColor.DARK_RED + "Close Menu!");
+		closemeta.setDisplayName(ChatColor.BOLD + "" + ChatColor.DARK_RED + "Close Menu");
 		ArrayList<String> Lore4 = new ArrayList<String>();
 		closemeta.setLore(Lore4);
 		close.setItemMeta(closemeta);
@@ -320,7 +320,7 @@ public class FactionsGUI extends JavaPlugin implements Listener {
 		MPlayer msender = MPlayer.get(p);
 		Faction faction = null;
 		faction = msender.getFaction();
-		if (e.getInventory().getTitle().equals(ChatColor.GREEN + "Factions GUI")) {
+		if (e.getInventory().getTitle().equals(ChatColor.BLACK + "Factions GUI")) {
 			if (e.getSlot() == 10) {
 				if (faction == FactionColl.get().getByName("Wilderness")
 						|| faction == FactionColl.get().getByName("None")) {
